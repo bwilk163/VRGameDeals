@@ -1,0 +1,8 @@
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\bin\Debug\netstandard2.0\VRGameDeals.Data.deps.json
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\bin\Debug\netstandard2.0\VRGameDeals.Data.dll
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\obj\Debug\netstandard2.0\VRGameDeals.Data.csprojAssemblyReference.cache
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\obj\Debug\netstandard2.0\VRGameDeals.Data.AssemblyInfoInputs.cache
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\obj\Debug\netstandard2.0\VRGameDeals.Data.AssemblyInfo.cs
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\bin\Debug\netstandard2.0\VRGameDeals.Data.pdb
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\obj\Debug\netstandard2.0\VRGameDeals.Data.dll
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Data\obj\Debug\netstandard2.0\VRGameDeals.Data.pdb

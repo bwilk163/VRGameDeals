@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRGameDeals.Api", "VRGameDeals.Api\VRGameDeals.Api.csproj", "{DE734F11-DB58-471D-8329-4CAE3D8B9424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRGameDeals.Data", "VRGameDeals.Data\VRGameDeals.Data.csproj", "{ED1890D4-FC1B-4C8A-8CE2-C895A3373844}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE734F11-DB58-471D-8329-4CAE3D8B9424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE734F11-DB58-471D-8329-4CAE3D8B9424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE734F11-DB58-471D-8329-4CAE3D8B9424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE734F11-DB58-471D-8329-4CAE3D8B9424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1890D4-FC1B-4C8A-8CE2-C895A3373844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1890D4-FC1B-4C8A-8CE2-C895A3373844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1890D4-FC1B-4C8A-8CE2-C895A3373844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1890D4-FC1B-4C8A-8CE2-C895A3373844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0600B552-7438-4301-87AA-7E10D974A9F8}
+	EndGlobalSection
+EndGlobal
