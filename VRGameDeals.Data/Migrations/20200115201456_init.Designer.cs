@@ -10,8 +10,8 @@ using VRGameDeals.Data.EF;
 namespace VRGameDeals.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200114174201_m10")]
-    partial class m10
+    [Migration("20200115201456_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,20 @@ namespace VRGameDeals.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("VRGameDeals.Data.EF.DatabaseContext+xxx", b =>
+                {
+                    b.Property<Guid>("guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("guid");
+
+                    b.ToTable("String");
+                });
 
             modelBuilder.Entity("VRGameDeals.Data.Models.Game", b =>
                 {
@@ -47,15 +61,10 @@ namespace VRGameDeals.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("GameGuid")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Guid");
-
-                    b.HasIndex("GameGuid");
 
                     b.ToTable("Platforms");
                 });
@@ -81,23 +90,16 @@ namespace VRGameDeals.Data.Migrations
                     b.ToTable("PlatformGame");
                 });
 
-            modelBuilder.Entity("VRGameDeals.Data.Models.Platform", b =>
-                {
-                    b.HasOne("VRGameDeals.Data.Models.Game", null)
-                        .WithMany("Platforms")
-                        .HasForeignKey("GameGuid");
-                });
-
             modelBuilder.Entity("VRGameDeals.Data.Models.PlatformGame", b =>
                 {
                     b.HasOne("VRGameDeals.Data.Models.Game", "Game")
-                        .WithMany()
+                        .WithMany("Platforms")
                         .HasForeignKey("GameGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("VRGameDeals.Data.Models.Platform", "Platform")
-                        .WithMany("PlatformGames")
+                        .WithMany("Games")
                         .HasForeignKey("PlatformGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

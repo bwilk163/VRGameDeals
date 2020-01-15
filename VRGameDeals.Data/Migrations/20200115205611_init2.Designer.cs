@@ -10,8 +10,8 @@ using VRGameDeals.Data.EF;
 namespace VRGameDeals.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200114181102_m11")]
-    partial class m11
+    [Migration("20200115205611_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

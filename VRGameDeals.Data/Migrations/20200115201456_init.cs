@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VRGameDeals.Data.Migrations
 {
-    public partial class m10 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,18 +26,23 @@ namespace VRGameDeals.Data.Migrations
                 {
                     Guid = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    GameGuid = table.Column<Guid>(nullable: true)
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Platforms", x => x.Guid);
-                    table.ForeignKey(
-                        name: "FK_Platforms_Games_GameGuid",
-                        column: x => x.GameGuid,
-                        principalTable: "Games",
-                        principalColumn: "Guid",
-                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "String",
+                columns: table => new
+                {
+                    guid = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_String", x => x.guid);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,11 +79,6 @@ namespace VRGameDeals.Data.Migrations
                 name: "IX_PlatformGame_PlatformGuid",
                 table: "PlatformGame",
                 column: "PlatformGuid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Platforms_GameGuid",
-                table: "Platforms",
-                column: "GameGuid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -87,10 +87,13 @@ namespace VRGameDeals.Data.Migrations
                 name: "PlatformGame");
 
             migrationBuilder.DropTable(
-                name: "Platforms");
+                name: "String");
 
             migrationBuilder.DropTable(
                 name: "Games");
+
+            migrationBuilder.DropTable(
+                name: "Platforms");
         }
     }
 }
