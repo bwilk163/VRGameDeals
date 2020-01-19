@@ -8,19 +8,34 @@ namespace VRGameDeals.Data.Models
 {
     public class PlatformGame
     {
-        
-        [Key]
-        public Guid Guid{ get; set; }
-        public Guid GameGuid { get; set; }
-        public Game Game { get; set; }
-        public Guid PlatformGuid { get; set; }
-        public Platform Platform { get; set; }
+        public Guid GameId { get; set; }
+        public virtual Game Game { get; set; }
 
-        public PlatformGame(Guid gameGuid, Guid platformGuid)
+        public Guid PlatformId { get; set; }
+        public virtual Platform Platform { get; set; }
+
+        /// <summary>
+        /// Release date of a game on specific platform
+        /// </summary>
+        public DateTime ReleaseDate { get; set; }
+
+
+        /// <summary>
+        /// Price of a game on specific platform
+        /// </summary>
+        public decimal  Price { get; set; }
+
+        protected PlatformGame()
         {
-            Guid = Guid.NewGuid();
-            GameGuid = gameGuid;
-            PlatformGuid = platformGuid;
+
+        }
+
+        public PlatformGame(Guid gameGuid, Guid platformGuid, DateTime releaseDate, decimal price)
+        {
+            GameId = gameGuid;
+            PlatformId = platformGuid;
+            ReleaseDate = releaseDate;
+            Price = price;
         }
     }
 }

@@ -55,18 +55,21 @@ namespace VRGameDeals.Data.Migrations
 
             modelBuilder.Entity("VRGameDeals.Data.Models.PlatformGame", b =>
                 {
-                    b.Property<Guid>("GameGuid")
+                    b.Property<Guid>("GameId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PlatformGuid")
+                    b.Property<Guid>("PlatformId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("GameGuid", "PlatformGuid");
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("PlatformGuid");
+                    b.HasKey("GameId", "PlatformId");
+
+                    b.HasIndex("PlatformId");
 
                     b.ToTable("PlatformGame");
                 });
@@ -75,13 +78,13 @@ namespace VRGameDeals.Data.Migrations
                 {
                     b.HasOne("VRGameDeals.Data.Models.Game", "Game")
                         .WithMany("Platforms")
-                        .HasForeignKey("GameGuid")
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("VRGameDeals.Data.Models.Platform", "Platform")
                         .WithMany("Games")
-                        .HasForeignKey("PlatformGuid")
+                        .HasForeignKey("PlatformId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -8,7 +8,6 @@ namespace VRGameDeals.Data.Models
 {
     public class Game
     {
-        [Key]
         public Guid Guid { get; set; }
 
         public string Name { get; set; }

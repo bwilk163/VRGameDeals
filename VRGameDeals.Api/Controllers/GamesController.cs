@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VRGameDeals.Api.Commands;
 using VRGameDeals.Data.Models;
 using VRGameDeals.Data.Services;
 
@@ -43,17 +44,17 @@ namespace VRGameDeals.Api.Controllers
             return Created("", result);
         }
 
-        [HttpPost("{gameGuid}")]
-        public async Task<IActionResult> AddPlatformToGame(Guid gameGuid, [FromBody] JsonPlatformGuid platformGuid)
+        [HttpPost("{gameId}")]
+        public async Task<IActionResult> AddPlatformToGame(Guid gameId, [FromBody] PlatformGameCommand platformGameCommand)
         {
-            var result = await _gamesService.AddPlatformToGame(platformGuid.Guid, gameGuid);
+            var result = await _gamesService.AddPlatformToGame(
+                gameId,
+                platformGameCommand.PlatformId,
+                platformGameCommand.ReleaseDate,
+                platformGameCommand.Price
+                );
 
             return Ok(result);
-        }
-
-       public class JsonPlatformGuid
-        {
-            public Guid Guid { get; set; }
         }
     }
 }

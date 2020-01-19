@@ -13,10 +13,8 @@ namespace VRGameDeals.Data.EF
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Platform> Platforms { get; set; }
 
-
         public DatabaseContext(DbContextOptions optionsBuilder) : base(optionsBuilder)
         {
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,16 +25,22 @@ namespace VRGameDeals.Data.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PlatformGame>()
-                .HasKey(pg => new { pg.GameGuid, pg.PlatformGuid });
+                .HasKey(pg => new { pg.GameId, pg.PlatformId });
+
+
+            modelBuilder.Entity<PlatformGame>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18,2)");
+
             modelBuilder.Entity<PlatformGame>()
                 .HasOne(pg => pg.Game)
                 .WithMany(g => g.Platforms)
-                .HasForeignKey(pg => pg.GameGuid);
+                .HasForeignKey(pg => pg.GameId);
 
             modelBuilder.Entity<PlatformGame>()
                 .HasOne(pg => pg.Platform)
                 .WithMany(p => p.Games)
-                .HasForeignKey(pg => pg.PlatformGuid);
+                .HasForeignKey(pg => pg.PlatformId);
 
             modelBuilder.Entity<Game>()
                 .HasKey(g => g.Guid);

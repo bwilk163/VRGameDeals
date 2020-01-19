@@ -10,8 +10,8 @@ using VRGameDeals.Data.EF;
 namespace VRGameDeals.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200115201456_init")]
-    partial class init
+    [Migration("20200119213044_init3")]
+    partial class init3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,20 +20,6 @@ namespace VRGameDeals.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("VRGameDeals.Data.EF.DatabaseContext+xxx", b =>
-                {
-                    b.Property<Guid>("guid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("guid");
-
-                    b.ToTable("String");
-                });
 
             modelBuilder.Entity("VRGameDeals.Data.Models.Game", b =>
                 {
@@ -71,21 +57,21 @@ namespace VRGameDeals.Data.Migrations
 
             modelBuilder.Entity("VRGameDeals.Data.Models.PlatformGame", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("GameId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("GameGuid")
+                    b.Property<Guid>("PlatformId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PlatformGuid")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Guid");
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("GameGuid");
+                    b.HasKey("GameId", "PlatformId");
 
-                    b.HasIndex("PlatformGuid");
+                    b.HasIndex("PlatformId");
 
                     b.ToTable("PlatformGame");
                 });
@@ -94,13 +80,13 @@ namespace VRGameDeals.Data.Migrations
                 {
                     b.HasOne("VRGameDeals.Data.Models.Game", "Game")
                         .WithMany("Platforms")
-                        .HasForeignKey("GameGuid")
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("VRGameDeals.Data.Models.Platform", "Platform")
                         .WithMany("Games")
-                        .HasForeignKey("PlatformGuid")
+                        .HasForeignKey("PlatformId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

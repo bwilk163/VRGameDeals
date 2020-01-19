@@ -19,7 +19,7 @@ namespace VRGameDeals.Data.Services
 
         public async Task<IEnumerable<Game>> GetAll()
         {
-            var games = await _databaseContext.Games.ToListAsync();
+            var games = await _databaseContext.Games.Include(g => g.Platforms).ThenInclude(p => p.Platform).ToListAsync();
             return games;
         }
 
@@ -43,11 +43,11 @@ namespace VRGameDeals.Data.Services
             return g;
         }
 
-        public async Task<Game> AddPlatformToGame(Guid platformGuid, Guid gameGuid)
+        public async Task<Game> AddPlatformToGame(Guid gameId, Guid platformId, DateTime releaseDate, decimal price)
         {
-            var game = await _databaseContext.Games.Include(p => p.Platforms).FirstOrDefaultAsync(x => x.Guid == gameGuid);
-            var platform = await _databaseContext.Platforms.FirstOrDefaultAsync(x => x.Guid == platformGuid);
-            game.Platforms.Add(new PlatformGame(game.Guid, platform.Guid));
+            var game = await _databaseContext.Games.Include(p => p.Platforms).FirstOrDefaultAsync(x => x.Guid == gameId);
+            var platform = await _databaseContext.Platforms.FirstOrDefaultAsync(x => x.Guid == platformId);
+            game.Platforms.Add(new PlatformGame(game.Guid, platform.Guid, releaseDate, price ));
 
             _databaseContext.Update(game);
             await _databaseContext.SaveChangesAsync();
