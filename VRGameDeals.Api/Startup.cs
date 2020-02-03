@@ -41,7 +41,8 @@ namespace VRGameDeals.Api
                 //opt.UseSqlServer(@"Server=DESKTOP-EN9NL69\SQLEXPRESS;Database=VRGames;Trusted_Connection=True");
                 opt.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
-            services.AddScoped<GamesService>();
+            services.AddScoped<IGamesService, GamesService>();
+            services.AddScoped<DiscountsService>();
             services.AddScoped<PlatformsService>();
         }
 

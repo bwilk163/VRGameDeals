@@ -9,7 +9,7 @@ using VRGameDeals.Data.Models;
 
 namespace VRGameDeals.Data.Services
 {
- public   class DiscountsService
+    public class DiscountsService : IDiscountsService
     {
         private readonly DatabaseContext _databaseContext;
         public DiscountsService(DatabaseContext databaseContext)
