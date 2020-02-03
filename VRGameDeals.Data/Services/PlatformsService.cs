@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace VRGameDeals.Data.Services
 {
-    public class PlatformsService
+    public class PlatformsService : IPlatformsService
     {
         private readonly DatabaseContext _databaseContext;
         public PlatformsService(DatabaseContext databaseContext)

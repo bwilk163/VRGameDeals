@@ -42,8 +42,8 @@ namespace VRGameDeals.Api
                 opt.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
             services.AddScoped<IGamesService, GamesService>();
-            services.AddScoped<DiscountsService>();
-            services.AddScoped<PlatformsService>();
+            services.AddScoped<IDiscountsService, DiscountsService>();
+            services.AddScoped<IPlatformsService, PlatformsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
