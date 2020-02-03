@@ -8,7 +8,6 @@ namespace VRGameDeals.Data.Models
 {
     public class Platform
     {
-        [Key]
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -18,6 +17,13 @@ namespace VRGameDeals.Data.Models
         public Platform()
         {
             Games = new List<PlatformGame>();
+        }
+
+        public Platform(Guid guid, string name, string description)
+        {
+            Guid = guid;
+            Name = name;
+            Description = description;
         }
     }
 }

@@ -115,3 +115,5 @@ C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\bin\Debug\netcoreapp3.1\Mi
 C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\obj\Debug\netcoreapp3.1\VRGameDeals.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\bin\Debug\netcoreapp3.1\VRGameDeals.Api.Views.dll
+C:\Users\god\source\repos\VRGameDeals\VRGameDeals.Api\bin\Debug\netcoreapp3.1\VRGameDeals.Api.Views.pdb

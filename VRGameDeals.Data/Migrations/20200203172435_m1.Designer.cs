@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VRGameDeals.Data.EF;
 
 namespace VRGameDeals.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200203172435_m1")]
+    partial class m1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,10 +30,7 @@ namespace VRGameDeals.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("GameGuid")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PlatformGameId")
+                    b.Property<Guid>("GameId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
@@ -45,9 +44,7 @@ namespace VRGameDeals.Data.Migrations
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("GameGuid");
-
-                    b.HasIndex("PlatformGameId");
+                    b.HasIndex("GameId");
 
                     b.ToTable("Discounts");
                 });
@@ -64,17 +61,12 @@ namespace VRGameDeals.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("StandardPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Guid");
 
                     b.ToTable("Games");
-
-                    b.HasData(
-                        new
-                        {
-                            Guid = new Guid("26f2a34c-7f9f-40e6-aeca-6a875ace5be9"),
-                            Description = "FPS Shooter",
-                            Name = "Pavlov"
-                        });
                 });
 
             modelBuilder.Entity("VRGameDeals.Data.Models.Platform", b =>
@@ -92,22 +84,10 @@ namespace VRGameDeals.Data.Migrations
                     b.HasKey("Guid");
 
                     b.ToTable("Platforms");
-
-                    b.HasData(
-                        new
-                        {
-                            Guid = new Guid("c4149c8f-b816-4c75-ae8d-94c9b7d18c9b"),
-                            Description = "Mobile",
-                            Name = "Oculus Quest"
-                        });
                 });
 
             modelBuilder.Entity("VRGameDeals.Data.Models.PlatformGame", b =>
                 {
-                    b.Property<Guid>("Guid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("GameId")
                         .HasColumnType("uniqueidentifier");
 
@@ -120,34 +100,18 @@ namespace VRGameDeals.Data.Migrations
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Guid");
-
-                    b.HasIndex("GameId");
+                    b.HasKey("GameId", "PlatformId");
 
                     b.HasIndex("PlatformId");
 
                     b.ToTable("PlatformGame");
-
-                    b.HasData(
-                        new
-                        {
-                            Guid = new Guid("2ec89778-58f2-4e5a-af36-ed55d46f7ff9"),
-                            GameId = new Guid("26f2a34c-7f9f-40e6-aeca-6a875ace5be9"),
-                            PlatformId = new Guid("c4149c8f-b816-4c75-ae8d-94c9b7d18c9b"),
-                            Price = 99m,
-                            ReleaseDate = new DateTime(2019, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("VRGameDeals.Data.Models.Discount", b =>
                 {
-                    b.HasOne("VRGameDeals.Data.Models.Game", null)
+                    b.HasOne("VRGameDeals.Data.Models.Game", "Game")
                         .WithMany("Discounts")
-                        .HasForeignKey("GameGuid");
-
-                    b.HasOne("VRGameDeals.Data.Models.PlatformGame", "PlatformGame")
-                        .WithMany("Discounts")
-                        .HasForeignKey("PlatformGameId")
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

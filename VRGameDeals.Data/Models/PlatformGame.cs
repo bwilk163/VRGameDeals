@@ -8,6 +8,7 @@ namespace VRGameDeals.Data.Models
 {
     public class PlatformGame
     {
+        public Guid Guid { get; set; }
         public Guid GameId { get; set; }
         public virtual Game Game { get; set; }
 
@@ -25,17 +26,22 @@ namespace VRGameDeals.Data.Models
         /// </summary>
         public decimal  Price { get; set; }
 
+
+        public virtual ICollection<Discount> Discounts { get; set; }
+
         protected PlatformGame()
         {
-
+            Guid = Guid.NewGuid();
         }
 
         public PlatformGame(Guid gameGuid, Guid platformGuid, DateTime releaseDate, decimal price)
         {
+            Guid = Guid.NewGuid();
             GameId = gameGuid;
             PlatformId = platformGuid;
             ReleaseDate = releaseDate;
             Price = price;
+
         }
     }
 }

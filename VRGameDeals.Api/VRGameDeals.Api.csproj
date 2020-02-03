@@ -19,5 +19,9 @@
     <ProjectReference Include="..\VRGameDeals.Data\VRGameDeals.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Shared\" />
+  </ItemGroup>
+
 
 </Project>

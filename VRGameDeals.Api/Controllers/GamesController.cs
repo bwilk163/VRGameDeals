@@ -26,7 +26,6 @@ namespace VRGameDeals.Api.Controllers
         {
             var allGames = await _gamesService.GetAll();
 
-
             return Ok(allGames);
         }
         [HttpPost]
