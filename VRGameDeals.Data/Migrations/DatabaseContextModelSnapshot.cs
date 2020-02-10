@@ -131,7 +131,7 @@ namespace VRGameDeals.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Guid = new Guid("2ec89778-58f2-4e5a-af36-ed55d46f7ff9"),
+                            Guid = new Guid("12386a1d-6cb1-4502-bce4-f14afba68264"),
                             GameId = new Guid("26f2a34c-7f9f-40e6-aeca-6a875ace5be9"),
                             PlatformId = new Guid("c4149c8f-b816-4c75-ae8d-94c9b7d18c9b"),
                             Price = 99m,

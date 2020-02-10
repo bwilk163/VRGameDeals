@@ -14,9 +14,9 @@ namespace VRGameDeals.Api.Controllers
     public class PlatformsController : ControllerBase
     {
 
-        private readonly PlatformsService _platformsService;
+        private readonly IPlatformsService _platformsService;
 
-        public PlatformsController(PlatformsService platformsService)
+        public PlatformsController(IPlatformsService platformsService)
         {
             _platformsService = platformsService;
         }

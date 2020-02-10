@@ -14,9 +14,9 @@ namespace VRGameDeals.Api.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private readonly GamesService _gamesService;
+        private readonly IGamesService _gamesService;
 
-        public GamesController(GamesService gamesService)
+        public GamesController(IGamesService gamesService)
         {
             _gamesService = gamesService;
         }
